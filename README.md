@@ -1,16 +1,130 @@
-# React + Vite
+# ⏰ React Clock & Stopwatch
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple **React application** that displays a **live digital clock** along with a **stopwatch**.
+The clock updates every second and the stopwatch allows you to **start, stop, and reset time**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## React Compiler
+* 🕒 **Live Digital Clock**
+* ⏱ **Stopwatch Timer**
+* ▶️ Start the stopwatch
+* ⏸ Stop the stopwatch
+* 🔄 Reset the stopwatch
+* ⚛ Built using **React Hooks (useState & useEffect)**
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠 Technologies Used
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* ⚛ **React.js**
+* 🧠 **React Hooks**
+
+  * `useState`
+  * `useEffect`
+* 🎨 CSS
+
+---
+
+## 📂 Project Structure
+
+```
+project-folder
+│
+├── src
+│   ├── App.css
+│   ├── Clock.jsx
+│   └── main.jsx
+│
+└── README.md
+```
+
+---
+
+## ⚙️ How It Works
+
+### 🕒 Clock Logic
+
+* A state variable `date` stores the current time.
+* `setInterval` updates the time every **1 second**.
+* The component displays the current system time in the UI.
+
+### ⏱ Stopwatch Logic
+
+State variables used:
+
+| State   | Purpose                               |
+| ------- | ------------------------------------- |
+| `timer` | Stores stopwatch time in seconds      |
+| `on`    | Controls whether stopwatch is running |
+
+When the **Start** button is clicked:
+
+* `on` becomes `true`
+* The timer increases every second.
+
+When **Stop** is clicked:
+
+* The timer stops.
+
+When **Reset** is clicked:
+
+* The timer resets back to `0`.
+
+---
+
+## 📸 Preview
+
+💡 Displays:
+
+* Current **system time**
+* Stopwatch timer that counts seconds
+
+---
+
+## ▶️ Running the Project
+
+1. Clone the repository
+
+```
+git clone https://github.com/yourusername/react-clock-stopwatch.git
+```
+
+2. Navigate to the project folder
+
+```
+cd react-clock-stopwatch
+```
+
+3. Install dependencies
+
+```
+npm install
+```
+
+4. Run the project
+
+```
+npm run dev
+```
+
+---
+
+## 📌 Future Improvements
+
+* ⏱ Add **minutes and milliseconds**
+* 🎨 Improve UI styling
+* 📱 Make it **fully responsive**
+* 🔊 Add sound when stopwatch starts/stops
+
+---
+
+## 👨‍💻 Author
+
+**Swayam Sharma**
+Computer Science Engineering Student
+
+---
+
+⭐ If you like this project, consider giving it a **star** on GitHub!
