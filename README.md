@@ -123,8 +123,7 @@ npm run dev
 ## 👨‍💻 Author
 
 **Swayam Sharma**
-Computer Science Engineering Student
+
 
 ---
 
-⭐ If you like this project, consider giving it a **star** on GitHub!
