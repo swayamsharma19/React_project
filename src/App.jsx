@@ -1,46 +1,50 @@
-import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import Card from "./Card.jsx";
 import "./App.css";
 
-function Clock() {
-  const [date, setDate] = useState(new Date());
+function App() {
+  const [userdata, setuserData] = useState([]);
+  const [index, setIndex] = useState(1);
+  const [loading, setLoading] = useState(false);
 
-  const[timer,setTimer]=useState(0);
-  const[on,setOn]=useState(false);
-
-  function refreshClock() {
-    setDate(new Date());
-  }
+  const getData = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.get(
+        `https://picsum.photos/v2/list?page=${index}&limit=10`,
+      );
+      setuserData(response.data);
+    } catch (error) {
+      console.log("Error fetching data:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const timerId = setInterval(refreshClock, 1000);
-
-    return function cleanup() {
-      clearInterval(timerId);
-    };
-  }, []);
-
-  useEffect(()=>{
-    let interval=null;
-    if(on){
-      interval=setInterval(()=>{
-        setTimer((prev)=>prev+1);
-      },1000);
-    }
-    return () => clearInterval(interval);
-  },[on]);
+    getData();
+  }, [index]);
 
   return (
     <div className="container">
-      <h1>Clock</h1>
-      <span className="time">{date.toLocaleTimeString()}</span>
+      <div className="top-bar">
+        <button onClick={() => index > 1 && setIndex(index - 1)}>Prev</button>
 
-      <h1>Stopwatch</h1>
-      <h2>{timer}sec</h2>
-      <button onClick={() => setOn(true)}>Start</button>
-      <button onClick={() => setOn(false)}>Stop</button>
-      <button onClick={() => setTimer(0)}>Reset</button>
+        <button onClick={() => setIndex(index + 1)}>Next</button>
+      </div>
+
+      <div className="grid">
+        {loading ? (
+          <h3>Loading...</h3> // ✅ better loading control
+        ) : (
+          userdata.map((elem) => (
+            <Card key={elem.id} elem={elem} /> // ✅ fixed key
+          ))
+        )}
+      </div>
     </div>
   );
 }
 
-export default Clock;
+export default App;
